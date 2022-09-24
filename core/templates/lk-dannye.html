@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>SMARTFIT — Личные данные</title>
+
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="../static/css/jquery.fancybox.min.css">
+
+	<link rel="stylesheet" href="../static/fonts/fonts.css">
+	<link rel="stylesheet" href="../static/css/main.css">
+	<link rel="icon" href="../static/img/favicon.ico">
+
+	<link rel="stylesheet" href="../static/css/media.css">
+	</head>
+<body>
+	<div class="popup popup_vhod">
+		<div>
+			<img src="../static/img/plus.svg" alt="close" class="popup_closer">
+			<h3>Вход в аккаунт</h3>
+			<form action="">
+				<div class="inputbox">
+					<span>Ваша почта</span>
+					<input type="email" placeholder="Адрес электронной почты">
+				</div>
+				<div class="inputbox">
+					<span>Ваш пароль</span>
+					<input type="password" placeholder="Пароль">
+				</div>
+				<button>Войти в аккаунт</button>
+				<span>У вас нет аккаунта? <a href="#">Создать</a></span>
+			</form>
+		</div>
+	</div>
+	<div class="popup popup_exit">
+		<div>
+			<img src="../static/img/plus.svg" alt="close" class="popup_closer">
+			<img src="../static/img/attention.svg" alt="attention">
+			<h3>Вы уверены?</h3>
+			<span>Что хотите выйти из личного кабинета?</span>
+			<div class="clearfix">
+				<button class="empty left">Отменить</button>
+				<button class="left popup_closer">Выйти</button>
+			</div>
+		</div>
+	</div>
+	<div class="popup popup_smenit_parol">
+		<div>
+			<img src="../static/img/plus.svg" alt="close" class="popup_closer">
+			<h3>Смена пароля</h3>
+			<form action="">
+				<div class="inputbox">
+					<span>Текущий пароль</span>
+					<input type="password" placeholder="Текущий пароль" autocomplete="current-password">
+				</div>
+				<div class="inputbox">
+					<span>Новый пароль</span>
+					<input type="password" placeholder="Новый пароль" autocomplete="off">
+				</div>
+				<div class="inputbox">
+					<span>Подтверждение пароля</span>
+					<input type="password" placeholder="Подтверждение пароля" autocomplete="off">
+				</div>
+				<button>Сохранить</button>
+			</form>
+		</div>
+	</div>
+	<div class="popup popup_podpiska">
+		<div>
+			<img src="../static/img/plus.svg" alt="close" class="popup_closer">
+			<h3>Безлимит навсегда</h3>
+			<form action="">
+				<div class="inputbox">
+					<span>Ваша почта</span>
+					<input type="email" placeholder="Адрес электронной почты">
+				</div>
+				<div class="inputbox">
+					<span>Ваш телефон</span>
+					<input type="password" placeholder="+7 (___) ___-__-__">
+				</div>
+				<div class="inputbox promokod">
+					<span>Промокод</span>
+					<input type="password" placeholder="Промокод">
+					<button>Ок</button>
+				</div>
+				<div class="clearfix">
+					<div class="left">Стоимость:</div>
+					<div class="right clearfix">
+						<div class="left">2490 р.</div>
+						<div class="left">2490 р.</div>
+					</div>
+				</div>
+				<button>Оплатить</button>
+			</form>
+		</div>
+	</div>
+	<header class="lk_header">
+		<div class="container_big">
+			<div class="clearfix">
+				<a href="/" class="logo left"><img src="../static/img/logo.svg" alt="logo"></a>
+				<ul class="menu left clearfix">
+					<li class="left"><a href="trenery.html">Тренеры</a></li>
+					<li class="left"><a href="programmy.html">Программы</a></li>
+					<li class="left"><a href="blog.html">Блог</a></li>
+					<li class="left"><a href="#">Сообщество</a></li>
+				</ul>
+				<div class="menu_mob left">
+					<img src="../static/img/burger.png" alt="burger">
+					<input type="checkbox">
+					<div class="menu_mob-ul">
+						<ul>
+							<li><a href="trenery.html">Тренеры</a></li>
+							<li><a href="programmy.html">Программы</a></li>
+							<li><a href="blog.html">Блог</a></li>
+							<li><a href="#">Сообщество</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="right clearfix">
+					<figure class="right">D</figure>
+					<span class="right">Dima.vasiliev.98!</span>
+					<img src="../static/img/calendar.svg" alt="calendar" class="right">
+				</div>
+			</div>
+		</div>
+	</header>
+	<section class="lk lk_dannye">
+		<div class="clearfix">
+			<div class="sidebar left">
+				<ul class="menu">
+					<li class="clearfix"><img src="../static/img/person.svg" alt="profil" class="left"><a href="/lk.html" class="left">Профиль</a></li>
+					<li class="clearfix active"><img src="../static/img/settings.svg" alt="dannye" class="left"><a href="/lk-dannye.html" class="left">Данные</a></li>
+					<li class="clearfix"><img src="../static/img/menu.svg" alt="programmy" class="left"><a href="/lk-programmy.html" class="left">Программы</a></li>
+					<li class="clearfix"><img src="../static/img/timer.svg" alt="trenirovki" class="left"><a href="#" class="left">Тренировки</a></li>
+					<li class="clearfix"><img src="../static/img/kubok.svg" alt="process" class="left"><a href="/lk-progress.html" class="left">Прогресс</a></li>
+					<li class="clearfix"><img src="../static/img/star.svg" alt="izbrannoe" class="left"><a href="#" class="left">Избранное</a></li>
+					<li class="clearfix"><img src="../static/img/gramota.svg" alt="podpiska" class="left"><a href="/lk-podpiska.html" class="left">Подписка</a></li>
+					<li class="clearfix"><img src="../static/img/vhod.svg" alt="vyhod" class="left"><a href="#" class="left popup_exit_opener">Выход</a></li>
+				</ul>
+			</div>
+			<div class="dannye_content left">
+				<h1>Личные данные</h1>
+				<form class="clearfix" action="">
+					<div class="clearfix">
+						<figure class="left"><img src="../static/img/user.svg" alt="user"></figure>
+						<div class="left">
+							<div class="clearfix">
+								<div class="left filebox">
+									<input type="file">
+									<button class="empty">Сменить фото</button>
+								</div>
+								<button class="left files_deteler">Удалить</button>
+							</div>
+							<p>Допустимые типы файлов JPEG, GIF or PNG, 150x150px, 1MB</p>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="inputbox left">
+							<span>Ваше имя</span>
+							<input type="name" placeholder="Имя">
+						</div>
+						<div class="left lvlbox">
+							<span>Уровень активности</span>
+							<div class="clearfix">
+								<div class="radio left">
+									<input type="radio" name="lvl" value="Начальный" checked>
+									<button>Начальный</button>
+								</div>
+								<div class="radio left">
+									<input type="radio" name="lvl" value="Средний">
+									<button>Средний</button>
+								</div>
+								<div class="radio left">
+									<input type="radio" name="lvl" value="Эксперт">
+									<button>Эксперт</button>
+								</div>
+							</div>
+						</div>
+						<div class="inputbox left">
+							<span>Ваша фамилия</span>
+							<input type="name" placeholder="Фамилия">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш вес</span>
+							<input type="name" placeholder="Вес">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш телефон</span>
+							<input type="name" placeholder="+7 (___) ___-__-__">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш рост</span>
+							<input type="name" placeholder="Рост (см)">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш Email</span>
+							<input type="name" placeholder="Адрес электронной почты">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш пол</span>
+							<input type="name" placeholder="Пол">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш Instagram</span>
+							<input type="name" placeholder="/instagram.com">
+						</div>
+						<div class="inputbox left">
+							<span>Ваша дата рождения</span>
+							<input type="name" placeholder="Дата рождения">
+						</div>
+					</div>
+					<div class="clearfix">
+						<button class="right">Изменить данные</button>
+						<button class="empty right popup_smenit_parol_opener">Сменить пароль</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="container_big">
+			<div class="clearfix">
+				<div class="left">
+					<ul class="left">
+						<li><a href="trenery.html">Тренеры</a></li>
+						<li><a href="programmy.html">Программы</a></li>
+						<li><a href="blog.html">Блог</a></li>
+					</ul>
+					<ul class="left">
+						<li><a href="#">Сообщество</a></li>
+						<li><a href="#">Тарифы</a></li>
+						<li><a href="#">Тренерам</a></li>
+					</ul>
+					<ul class="left">
+						<li><a href="#">Соглашение</a></li>
+						<li><a href="#">Обработка данных</a></li>
+						<li><a href="#">Свяжитесь с нами</a></li>
+					</ul>
+				</div>
+				<div class="payment left">
+					<h4>Способы оплаты на сайте:</h4>
+					<div class="clearfix">
+						<img src="../static/img/mir.svg" alt="mir" class="left">
+						<img src="../static/img/visa.svg" alt="visa" class="left">
+						<img src="../static/img/mc.svg" alt="mc" class="left">
+						<img src="../static/img/maestro.svg" alt="maestro" class="left">
+						<img src="../static/img/alpha.svg" alt="alpha" class="left">
+						<img src="../static/img/pay-pal.svg" alt="pay-pal" class="left">
+						<img src="../static/img/google-pay.svg" alt="google-pay" class="left">
+						<img src="../static/img/apple-pay.svg" alt="apple-pay" class="left">
+						<img src="../static/img/tele2.svg" alt="tele2" class="left">
+						<img src="../static/img/yandex.svg" alt="yandex" class="left">
+						<img src="../static/img/mts.svg" alt="mts" class="left">
+						<img src="../static/img/qiwi.svg" alt="qiwi" class="left">
+					</div>
+				</div>
+				<div class="right">
+					<a href="/" class="logo"><img src="../static/img/logo-white.svg" alt="logo-white"></a>
+					<div class="clearfix">
+						<a href="#" class="instagram left"><img src="../static/img/instagram.svg" alt="instagram"></a>
+						<a href="#" class="youtube left"><img src="../static/img/youtube.svg" alt="youtube"></a>
+						<a href="#" class="vk left"><img src="../static/img/vk.svg" alt="vk"></a>
+						<a href="#" class="telegram left"><img src="../static/img/telegram.svg" alt="telegram"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="allrights clearfix">
+			<span>© 2022 SMARTFIT. Все права защищены</span>
+		</div>
+	</footer>
+
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="../static/js/script.js"></script>
+	<script type="text/javascript" src="../static/js/jquery.fancybox.min.js"></script>
+	<script src="../static/js/jquery.inputmask.bundle.js" type="text/javascript"></script>
+	<script>
+		$(function($){
+			//$(".phone").mask("+7 (999) 999-99-99");
+			$(".phone").inputmask({"mask": "+7 (999) 999-99-99"});
+		});
+	</script>
+
+	<!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+    	var rvws_sldr = new Swiper(".rvws_sldr", {
+			spaceBetween: 40,
+			slidesPerView: 3,
+		});
+    </script>
+
+    <script>
+		$(".fancybox").fancybox();   
+    </script>		
+</body>
+</html>
