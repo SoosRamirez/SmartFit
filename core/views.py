@@ -35,6 +35,12 @@ def logingin(request):
 
 
 @login_required
+def logout(request):
+    logout
+    return redirect('home')
+
+
+@login_required
 def lk(request):
     template = 'lk.html'
     return render(request, template)
@@ -46,8 +52,36 @@ def personalinfo(request):
     context = {
         'info': PersonalInfo.objects.filter(user=request.user)
     }
+    # p = PersonalInfo.objects.filter(user=request.user)
+    # p.update(name='hello')
     print(PersonalInfo.objects.filter(user=request.user)[0].image.url)
-    return render(request, template)
+    return render(request, template, context)
+
+
+@login_required
+def myprogramms(request):
+    template = 'lk-programmy.html'
+    context = {
+    }
+    return render(request, template, context)
+
+
+@login_required
+def progress(request):
+    template = 'lk-progress.html'
+    context = {
+    }
+    return render(request, template, context)
+
+
+# @login_required
+# def payments(request):
+#     template = 'lk-podpiska.html'
+#     payment = Payment.objects.filter(user=request.user)
+#     context = {
+#         'payment': payment
+#     }
+#     return render(request, template, context)
 
 
 def trainers(request):
@@ -85,6 +119,24 @@ def programs(request):
     return render(request, template, context)
 
 
+# def program(request, id):
+#     get_program = WorkoutProgram.objects.get(id=id)
+#     template = ''
+#     context = {
+#         'program': ge_program,
+#     }
+#     return render(request, template, context)
+#
+#
+# def workout(request, id):
+#     get_workout = Workout.objects.get(id=id)
+#     template = ''
+#     context = {
+#         'workout': get_workout,
+#     }
+#     return render(request, template, context)
+
+
 def blog(request):
     template = 'blog.html'
     list_blog = BlogPost.objects.order_by('likes')
@@ -111,19 +163,7 @@ def to_start(request):
     }
     return render(request, template, context)
 
-# def workout(request, id):
-#     get_workout = Workout.objects.get(id=id)
-#     template = ''
-#     context = {
-#         'workout': get_workout,
-#     }
-#     return render(request, template, context)
 
 
-# def program(request, id):
-#     get_program = WorkoutProgram.objects.get(id=id)
-#     template = ''
-#     context = {
-#         'program': ge_program,
-#     }
-#     return render(request, template, context)
+
+

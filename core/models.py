@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -96,7 +98,7 @@ class WorkoutProgram(models.Model):
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE, default='0')
     directions = models.ForeignKey(Direction, on_delete=models.SET_NULL, null=True)
     description = models.TextField(max_length=200)
-    subscribers = models.ManyToManyField(User, through='Subscription', default=0)
+    # subscribers = models.ManyToManyField(User, through='Subscription', default=0)
     pub_date = models.DateTimeField(auto_created=True, default='2001-01-01T00:00:00.000000+03:00')
     CHOICES = [
         ('1', 'Новичек'),
@@ -156,21 +158,24 @@ class Workout(models.Model):
         verbose_name = 'Тренировка'
 
 
-class Subscription(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    program = models.ForeignKey(WorkoutProgram, on_delete=models.CASCADE)
-    workout_stopped = models.IntegerField(default=0)
+# class Subscription(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     program = models.ForeignKey(WorkoutProgram, on_delete=models.CASCADE)
+#     workout_stopped = models.IntegerField(default=0)
+#
+#     def save(
+#             self, force_insert=False, force_update=False, using=None, update_fields=None
+#     ):
+#         super().save(self)
+#         self.program.trainer.subscribers = self.program.trainer.subscribers + 1
+#         self.program.trainer.save()
+#
+#     def delete(self, using=None, keep_parents=False):
+#         self.program.trainer.subscribers = self.program.trainer.subscribers - 1
+#         self.program.trainer.save()
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.program.trainer.subscribers = self.program.trainer.subscribers + 1
-        self.program.trainer.save()
 
-    def delete(self, using=None, keep_parents=False):
-        self.program.trainer.subscribers = self.program.trainer.subscribers - 1
-        self.program.trainer.save()
-
-
+# ready
 class PersonalInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField()
@@ -184,41 +189,39 @@ class PersonalInfo(models.Model):
     birthdate = models.DateField()
 
 
-# class Progress(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     date = models.DateField(auto_created=True)
-#     mass = models.IntegerField()
-#     hips = models.IntegerField()
-#     arms = models.IntegerField()
-#     chest = models.IntegerField()
-#     legs = models.IntegerField()
-#     waist = models.IntegerField()
-#
-#     def __init__(self):
-#         if len(Progress.objects.filter(user=self.user.id)) > 5:
-#             progress_list = Progress.objects.filter(user=self.user.id).order_by('date')
-#             progress_list[0].delete()
-#         super(Progress, self).__init__(self)
-#
-#
+# ready
+class Progress(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    mass = models.IntegerField()
+    hips = models.IntegerField()
+    arms = models.IntegerField()
+    chest = models.IntegerField()
+    legs = models.IntegerField()
+    waist = models.IntegerField()
+    prev_pic_front = models.ImageField(default='', null=True)
+    cur_pic_front = models.ImageField(default='')
+    prev_pic_back = models.ImageField(default='', null=True)
+    cur_pic_back = models.ImageField(default='')
+    prev_pic_side = models.ImageField(default='', null=True)
+    cur_pic_side = models.ImageField(default='')
+
+    def save(self, *args, **kwargs):
+        if len(Progress.objects.filter(user=self.user.id)) > 0:
+            self.prev_pic_side = Progress.objects.filter(user=self.user.id).order_by('-date')[0].cur_pic_side
+            self.prev_pic_front = Progress.objects.filter(user=self.user.id).order_by('-date')[0].cur_pic_front
+            self.prev_pic_back = Progress.objects.filter(user=self.user.id).order_by('-date')[0].cur_pic_back
+        if len(Progress.objects.filter(user=self.user.id)) > 5:
+            Progress.objects.filter(user=self.user.id).order_by('date')[0].delete()
+        super().save(self)
+
+
 # class Payment(models.Model):
 #     user = models.ForeignKey(User, on_delete=models.CASCADE)
 #     num = models.IntegerField()
 #     type = models.CharField(max_length=20)
 #     status = models.BooleanField()
 #     date_subscribed = models.DateField(auto_created=True)
-#     promo = models.CharField(max_length=20)
+#     promo = models.CharField(max_length=20, null=True)
 #     sum = models.IntegerField()
 #     date_expired = models.DateField(null=True)
-#     type_choice = [
-#         ('1', 'Месяц'),
-#         ('3', '3 Месяца')
-#     ]
-#     type_of_sub = models.IntegerField(choices=type_choice)
-#
-#     def __init__(self, *args, **kwargs):
-#         month = self.date_subscribed.month - 1 + int(self.type_of_sub)
-#         year = self.date_subscribed.year + month // 12
-#         month = month % 12 + 1
-#         self.date_expired = date(year, month, self.date_subscribed.day)
-#         super().__init__(*args, **kwargs)

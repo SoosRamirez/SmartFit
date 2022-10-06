@@ -129,7 +129,7 @@
 		<div class="clearfix">
 			<div class="sidebar left">
 				<ul class="menu">
-					<li class="clearfix"><img src="../static/img/person.svg" alt="profil" class="left"><a href="/lk.html" class="left">Профиль</a></li>
+					<li class="clearfix"><img src="../static/img/person.svg" alt="profil" class="left"><a href="{% url 'lk' %}" class="left">Профиль</a></li>
 					<li class="clearfix active"><img src="../static/img/settings.svg" alt="dannye" class="left"><a href="/lk-dannye.html" class="left">Данные</a></li>
 					<li class="clearfix"><img src="../static/img/menu.svg" alt="programmy" class="left"><a href="/lk-programmy.html" class="left">Программы</a></li>
 					<li class="clearfix"><img src="../static/img/timer.svg" alt="trenirovki" class="left"><a href="#" class="left">Тренировки</a></li>
@@ -142,7 +142,83 @@
 			<div class="dannye_content left">
 				<h1>Личные данные</h1>
 				<form class="clearfix" action="">
+                    {% if info %}
 					<div class="clearfix">
+                    {% load static %}
+{#                        {% get_media_prefix %}{{ info.0.image }} {{ info.0.name }}#}
+						<figure class="left"><img src="" alt="user"></figure>
+						<div class="left">
+							<div class="clearfix">
+								<div class="left filebox">
+									<input type="file">
+									<button class="empty">Сменить фото</button>
+								</div>
+								<button class="left files_deteler">Удалить</button>
+							</div>
+							<p>Допустимые типы файлов JPEG, GIF or PNG, 150x150px, 1MB</p>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="inputbox left">
+							<span>Ваше имя</span>
+							<input type="name" placeholder="name">
+						</div>
+						<div class="left lvlbox">
+							<span>Уровень активности</span>
+							<div class="clearfix">
+								<div class="radio left">
+									<input type="radio" name="lvl" value="Начальный" checked>
+									<button>Начальный</button>
+								</div>
+								<div class="radio left">
+									<input type="radio" name="lvl" value="Средний">
+									<button>Средний</button>
+								</div>
+								<div class="radio left">
+									<input type="radio" name="lvl" value="Эксперт">
+									<button>Эксперт</button>
+								</div>
+							</div>
+						</div>
+						<div class="inputbox left">
+							<span>Ваша фамилия</span>
+							<input type="name" placeholder="Фамилия">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш вес</span>
+							<input type="name" placeholder="Вес">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш телефон</span>
+							<input type="name" placeholder="+7 (___) ___-__-__">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш рост</span>
+							<input type="name" placeholder="Рост (см)">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш Email</span>
+							<input type="name" placeholder="Адрес электронной почты">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш пол</span>
+							<input type="name" placeholder="Пол">
+						</div>
+						<div class="inputbox left">
+							<span>Ваш Instagram</span>
+							<input type="name" placeholder="/instagram.com">
+						</div>
+						<div class="inputbox left">
+							<span>Ваша дата рождения</span>
+							<input type="name" placeholder="Дата рождения">
+						</div>
+					</div>
+					<div class="clearfix">
+						<button class="right">Изменить данные</button>
+						<button class="empty right popup_smenit_parol_opener">Сменить пароль</button>
+					</div>
+                    {% else %}
+                        <div class="clearfix">
 						<figure class="left"><img src="../static/img/user.svg" alt="user"></figure>
 						<div class="left">
 							<div class="clearfix">
@@ -214,6 +290,7 @@
 						<button class="right">Изменить данные</button>
 						<button class="empty right popup_smenit_parol_opener">Сменить пароль</button>
 					</div>
+                    {% endif %}
 				</form>
 			</div>
 		</div>
