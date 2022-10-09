@@ -163,7 +163,3 @@ def to_start(request):
     }
     return render(request, template, context)
 
-
-
-
-
