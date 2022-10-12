@@ -7,11 +7,12 @@ from .models import Trainer, BlogPost, Feedback, WorkoutProgram, PersonalInfo
 
 
 def home(request):
-    template = 'index.html'
+    template = 'SFindex.html'
     list_programs = WorkoutProgram.objects.all()[:10]
     list_blog = BlogPost.objects.all()[:10]
-    list_trainers = Trainer.objects.order_by('subscribers')[:4]
+    list_trainers = Trainer.objects.order_by('subscribers')
     list_feedback = Feedback.objects.all()
+    print(list_trainers)
     context = {
         "list_programs": list_programs,
         "list_blog": list_blog,
@@ -54,7 +55,7 @@ def personalinfo(request):
     }
     # p = PersonalInfo.objects.filter(user=request.user)
     # p.update(name='hello')
-    print(PersonalInfo.objects.filter(user=request.user)[0].image.url)
+    # print(PersonalInfo.objects.filter(user=request.user)[0].image.url)
     return render(request, template, context)
 
 

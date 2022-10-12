@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMARTFIT</title>
+
+    <link rel="stylesheet" href="../static/fonts/stylesheet.css">
+    <link rel="stylesheet" href="../static/css/SF_main.css">
+    <link rel="stylesheet" href="../static/css/SF_components.css">
+    <link rel="stylesheet" href="../static/css/modal.css">
+    <link rel="icon" href="../static/images/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class='carousel main-blog__slider'>
+        <div class="carousel__inner  ">
+            <div class="carousel__swiper swiper-container programs-slider">
+                <div class="swiper-wrapper">
+                    {% for i in list_blog %}
+                        <div class="swiper-slide">
+                            <div class='blog-slide main-blog__slide'>
+                            <div class="blog-slide__frame"
+                                 style='backgroundImage:url({{ i.picture }})'></div>
+                            <div class="blog-slide__info">
+                                <p class="blog-slide__title">{{ i.name }}</p>
+                                <div class="blog-slide__misc">
+                                    <p class="blog-slide__date">{{ i.pub_date }}</p>
+                                    <p class="blog-slide__time"></p>
+                                    <p class="blog-slide__likes">
+                                        <img src="../static/images/like.svg" alt="" class="blog-slide__heart"/>
+                                        {{ i.likes }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+{#    <div class='carousel__arrow-prev carouser__arrow main-programs__prev absolute'></div>#}
+{#    <div class='carousel__arrow-next carouser__arrow main-programs__next absolute'></div>#}
+    {#        <div class='carousel__arrow-prev carouser__arrow main-programs__prev absolute'></div>#}
+    {#        <div class='carousel__arrow-next carouser__arrow main-programs__next absolute'></div>#}
+</div>
+</div>
+</body>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+<script type="module">
+    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js'
+
+    var galleryTop = new Swiper('.programs-slider', {
+        centeredSlides: false,
+        loop: false,
+        slidesPerView: "auto",
+        spaceBetween: 40,
+        navigation: {
+            nextEl: `.main-programs__next`,
+            prevEl: `.main-programs__prev`,
+        },
+    });
+</script>
+</html>
