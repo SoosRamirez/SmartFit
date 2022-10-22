@@ -641,9 +641,14 @@ b {
       font-size: 18px;
       line-height: 17px; }
     .questions__item-body {
+      max-height: 0px;
+      overflow: hidden;
+      height: 0px;
       padding-left: 28px;
       padding-right: 98px; }
       .questions__item-body._opened {
+        max-height: none;
+        height: auto;
         margin-top: 30px; }
     .questions__item-button {
       transition: .3s; }
@@ -901,3 +906,7 @@ b {
       max-width: 100%;
       min-width: 100%;
       height: 240px; } }
+
+.hidden_content{
+  display: none !important;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMARTFIT</title>
+
+    <link rel="stylesheet" href="../static/fonts/stylesheet.css">
+    <link rel="stylesheet" href="../static/css/SF_main.css">
+    <link rel="stylesheet" href="../static/css/SF_components.css">
+    <link rel="stylesheet" href="../static/css/modal.css">
+    <link rel="icon" href="../static/images/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+</head>
+<body>
+<div class="wrapper questions__inner">
+    <h2 class="questions__title">
+        Остались <span class="underline small">вопросы</span>?
+    </h2>
+    <p class="questions__subtitle _18 center">Мы собрали самые часто задаваемые вопросы для вас</p>
+    <div class="questions__box">
+        {% for i in list_questions %}
+        <div class="questions__item _opened"></div>
+        <div class="questions__item-top">
+            <p class="questions__item-title">{{ i.title }}</p>
+            <img src={crossIcon} alt="" class={`questions__item-button ${state ? '_opened' : ''}`} />
+        </div>
+        <div class={`questions__item-body ${state ?
+        '_opened' : ''}`}>
+        {state && item.text}
+    </div>
+</div>
+{% endfor%}
+</div>
+</div>
+</div>
+</body>
+<script>
+    const crosses = document.querySelectorAll(".questions-item__button")
+    const questions = document.querySelectorAll(".questions-item__body")
+
+const handler = (index) => {
+  for (let j = 0; j < crosses.length; j++) {
+    if (crosses[j] !== crosses[index]) {
+      cross.classList.remove("_opened")
+      questions[j].classList.remove("_opened")
+    }
+    crosses[index].classList.toggle("_opened")
+    questions[index].classList.toggle("_opened")
+  }
+}
+</script>
+</html>

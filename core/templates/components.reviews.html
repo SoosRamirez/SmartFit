@@ -13,45 +13,44 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 </head>
 <body>
-<div class="wrapper">
-    <div class='carousel main-trainers__slider'>
-        <div class="carousel__inner  ">
-            <div class="carousel__swiper swiper-container programs-slider">
-                <div class="swiper-wrapper">
-                    {% for i in list_trainers %}
-                        <div class="swiper-slide">
-                            <div class="trainer-slide">
-                                <div
-                                        class="trainer-slide__frame"
-                                        style='background-image:url("{{ i.picture_src }}")'></div>
-                                <div class="trainer-slide__info">
-                                    <p class="trainer-slide__name">{{ name }}</p>
-                                    <div class="trainer-slide__misc">
-                                        <div class="trainer-slide__item">
-                                            <img src="../static/images/videos.svg" alt="" class="trainer-slide__item-icon"/>
-                                            {{ videos }}
+<div class="reviews">
+    <div class="reviews__inner wrapper">
+        <h2 class="reviews__title center">
+            <span class="underline small">Отзывы</span>
+        </h2>
+        <p class="_18 reviews__subtitle center">Вот что о нас говорят подопечные</p>
+        <div class="reviews__box">
+            <div class="wrapper">
+                <div class='carousel reviews'>
+                    <div class="carousel__inner  ">
+                        <div class="carousel__swiper swiper-container programs-slider">
+                            <div class="swiper-wrapper">
+                                {% for i in list_feedback %}
+                                    <div class="swiper-slide">
+                                        <div class='review-slide'>
+                                        <div class="review-slide__frame" style='
+                                                background-image: url({{ i.image }})'>
                                         </div>
-                                        <div class="trainer-slide__item">
-                                            <img src="../static/images/apps.svg" alt="" class="trainer-slide__item-icon"/>
-                                            {{ programs }}
-                                        </div>
-                                        <div class="trainer-slide__item">
-                                            <img src="../static/images/user.svg" alt="" class="trainer-slide__item-icon"/>
-                                            {{ people }}
+                                        <div class="review-slide__info">
+                                            <p class="review-slide__name">{{ i.name }}</p>
+                                            <p class="review-slide__text _16">{{ i.text }}</p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                    </div>
+                                {% endfor %}
                         </div>
-                    {% endfor %}
+                    </div>
                 </div>
+                    <div class="carousel__arrows">
+                <div class='carousel__arrow-prev carouser__arrow reviews__prev '></div>
+                <div class='carousel__arrow-next carouser__arrow reviews__next '></div>
+                {#        <div class='carousel__arrow-prev carouser__arrow main-programs__prev absolute'></div>#}
+                {#        <div class='carousel__arrow-next carouser__arrow main-programs__next absolute'></div>#}
+                    </div>
             </div>
         </div>
-        <div class='carousel__arrow-prev carouser__arrow main-programs__prev absolute'></div>
-        <div class='carousel__arrow-next carouser__arrow main-programs__next absolute'></div>
-        {#        <div class='carousel__arrow-prev carouser__arrow main-programs__prev absolute'></div>#}
-        {#        <div class='carousel__arrow-next carouser__arrow main-programs__next absolute'></div>#}
     </div>
+</div>
 </div>
 </body>
 <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
