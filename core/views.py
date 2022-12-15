@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_protect
 
+from SmartFit.settings import BASE_DIR
 from SmartFit import settings
 from .models import Trainer, BlogPost, Feedback, WorkoutProgram, PersonalInfo, Question, Direction, \
     Trend, Subscription, Workout, Payment, Progress
@@ -23,7 +24,8 @@ def home(request):
         "list_blog": list_blog,
         "list_trainers": list_trainers,
         "list_feedback": list_feedback,
-        "list_questions": list_questions
+        "list_questions": list_questions,
+	"dir": BASE_DIR,
     }
     print(request.user_agent.is_mobile)
     return render(request, template, context)

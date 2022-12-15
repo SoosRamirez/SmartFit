@@ -21,7 +21,7 @@ from SmartFit import settings
 from core import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('whatareyoudoinghere/goaway/forbi33en/admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('login', views.logingin, name='login'),
     path('logout', views.logout_view, name='logout'),
@@ -38,4 +38,4 @@ urlpatterns = [
     path('subscribe/<int:program_id>', views.subscribe, name='subscribe'),
     path('blog/', views.blog, name='blog'),
     path('start/', views.purchase, name='start'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

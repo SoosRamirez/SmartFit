@@ -1,4 +1,4 @@
-#!/Users/aleksejkomarov/PycharmProjects/SmartFit/venv/bin/Python
+#!/root/SmartFit/SmartFit/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

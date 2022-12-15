@@ -190,7 +190,7 @@
                                     <div class="trainer-slide">
                                         <a href="{% url 'trainer' i.id %}">
                                             <div class="trainer-slide__frame"
-                                                 style='background-image:url("{{ i.picture_src }}")'></div>
+                                                 style='background-image:url("../../media/{{ i.picture_src }}")'></div>
                                             <div class="trainer-slide__info">
                                                 <p class="trainer-slide__name">{{ i.name }}</p>
                                                 <div class="trainer-slide__misc">
@@ -238,7 +238,7 @@
                                     <div class="trainer-slide">
                                         <a href="{% url 'trainer' i.id %}">
                                             <div class="trainer-slide__frame"
-                                                 style='background-image:url("{{ i.picture_src }}")'></div>
+                                                 style='background-image:url("../../media/{{ i.picture_src }}")'></div>
                                             <div class="trainer-slide__info">
                                                 <p class="trainer-slide__name">{{ i.name }}</p>
                                                 <div class="trainer-slide__misc">
@@ -288,7 +288,7 @@
             {% for i in list_trainers %}
                 <div class="trainer-slide {% for j in i.direction.all %}{{ j.id }} {% endfor %} trainers_filter_slide">
                     <a href="{% url 'trainer' i.id %}">
-                        <div class="trainer-slide__frame" style="background-image:url('{{ i.picture_src }}')"></div>
+                        <div class="trainer-slide__frame" style="background-image:url('../../media/{{ i.picture_src }}')"></div>
                         <div class="trainer-slide__info">
                             <p class="trainer-slide__name">{{ i.name }}</p>
                             <div class="trainer-slide__misc">
@@ -391,12 +391,20 @@
         mobileMenu.classList.toggle('opened')
     }
     const handleModal = () => {
+	const modals = document.querySelectorAll(".modal")
+        const backgrounds = document.querySelectorAll(".modal-background")
+        modals[0].classList.add("modal-disabled")
+        backgrounds[0].classList.add("modal-disabled")
         const loginModal = document.getElementById('login-modal-box')
         const loginBackground = document.getElementById("login-modal-background")
         loginModal.classList.toggle('modal-disabled')
         loginBackground.classList.toggle('modal-disabled')
     }
     const handlePurchase = () => {
+	const modals = document.querySelectorAll(".modal")
+        const backgrounds = document.querySelectorAll(".modal-background")
+        modals[1].classList.add("modal-disabled")
+        backgrounds[1].classList.add("modal-disabled")
         const loginModal = document.getElementById('purchase-modal-box')
         const loginBackground = document.getElementById("purchase-modal-background")
         loginModal.classList.toggle('modal-disabled')

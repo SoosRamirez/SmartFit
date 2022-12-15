@@ -200,7 +200,7 @@
                                     <div class="program-slide program-slide_trend {{ i.directions.id }}">
                                         <a href="{% url 'program' i.id %}">
                                             <div class="program-slide__frame"
-                                                 style='background-image:url("/media/{{ i.picture_src }}");background-size:cover;background-position:center'>
+                                                 style='background-image:url("../../media/{{ i.picture_src }}");background-size:cover;background-position:center'>
                                             </div>
                                             <div class="program-slide__bottom">
                                                 <p class="program-slide__name">{{ i.name }}</p>
@@ -249,7 +249,7 @@
                                     <div class="program-slide">
                                         <a href="{% url 'program' i.id %}">
                                             <div class="program-slide__frame"
-                                                 style='background-image:url("/media/{{ i.picture_src }}");background-size:cover;background-position:center'>
+                                                 style='background-image:url("../../media/{{ i.picture_src }}");background-size:cover;background-position:center'>
                                             </div>
                                             <div class="program-slide__bottom">
                                                 <p class="program-slide__name">{{ i.name }}</p>
@@ -298,7 +298,7 @@
                                 <div class="program-slide">
                                     <a href="{% url 'program' i.id %}">
                                         <div class="program-slide__frame"
-                                             style='background-image:url("/media/{{ i.picture_src }}");background-size:cover;background-position:center'>
+                                             style='background-image:url("../../media/{{ i.picture_src }}");background-size:cover;background-position:center'>
                                         </div>
                                         <div class="program-slide__bottom">
                                             <p class="program-slide__name">{{ i.name }}</p>
@@ -351,7 +351,7 @@
             <div class="program-slide program-slide_all {{ i.directions.id }}">
                 <a href="{% url 'program' i.id %}">
                     <div class="program-slide__frame"
-                         style="background-image:url('/media/{{ i.picture_src }}'); background-size:cover; background-position:center ">
+                         style="background-image:url('../../media/{{ i.picture_src }}'); background-size:cover; background-position:center ">
                     </div>
                     <div class="program-slide__bottom">
                         <p class="program-slide__name">{{ i.name }}</p>
@@ -392,7 +392,7 @@
                                     <div class="swiper-slide">
                                         <div class='review-slide'>
                                             <div class="review-slide__frame" style='
-                                                    background-image: url("/media/{{ i.image }}")'>
+                                                    background-image: url("../../media/{{ i.image }}")'>
                                             </div>
                                             <div class="review-slide__info">
                                                 <p class="review-slide__name">{{ i.name }}</p>
@@ -518,6 +518,10 @@
         mobileMenu.classList.toggle('opened')
     }
     const handleModal = () => {
+	const modals = document.querySelectorAll(".modal")
+        const backgrounds = document.querySelectorAll(".modal-background")
+        modals[0].classList.add("modal-disabled")
+        backgrounds[0].classList.add("modal-disabled")
         const loginModal = document.getElementById('login-modal-box')
         const loginBackground = document.getElementById("login-modal-background")
         loginModal.classList.toggle('modal-disabled')
@@ -544,6 +548,10 @@
         }
     }
     const handlePurchase = () => {
+	const modals = document.querySelectorAll(".modal")
+        const backgrounds = document.querySelectorAll(".modal-background")
+        modals[1].classList.add("modal-disabled")
+        backgrounds[1].classList.add("modal-disabled")
         const loginModal = document.getElementById('purchase-modal-box')
         const loginBackground = document.getElementById("purchase-modal-background")
         loginModal.classList.toggle('modal-disabled')

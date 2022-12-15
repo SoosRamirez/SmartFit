@@ -181,7 +181,7 @@
                 <div class="swiper-slide">
                     <div class='blog-slide blog__slide'>
                         <div class="blog-slide__frame"
-                             style="background-image:url('{{ i.picture_src }}')"></div>
+                             style="background-image:url('../../media/{{ i.picture_src }}')"></div>
                         <div class="blog-slide__info">
                             <p class="blog-slide__title">{{ i.name }}</p>
                             <div class="blog-slide__misc">
@@ -275,6 +275,10 @@
 </body>
 <script>
     const handlePurchase = () => {
+	const modals = document.querySelectorAll(".modal")
+        const backgrounds = document.querySelectorAll(".modal-background")
+        modals[1].classList.add("modal-disabled")
+        backgrounds[1].classList.add("modal-disabled")
         const loginModal = document.getElementById('purchase-modal-box')
         const loginBackground = document.getElementById("purchase-modal-background")
         loginModal.classList.toggle('modal-disabled')
@@ -289,6 +293,10 @@
         mobileMenu.classList.toggle('opened')
     }
     const handleModal = () => {
+	const modals = document.querySelectorAll(".modal")
+        const backgrounds = document.querySelectorAll(".modal-background")
+        modals[0].classList.add("modal-disabled")
+        backgrounds[0].classList.add("modal-disabled")
         const loginModal = document.getElementById('login-modal-box')
         const loginBackground = document.getElementById("login-modal-background")
         loginModal.classList.toggle('modal-disabled')

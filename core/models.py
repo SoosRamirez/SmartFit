@@ -62,6 +62,7 @@ class Trainer(models.Model):
     name = models.CharField(max_length=20, verbose_name='Имя')
     trend = models.ForeignKey(Trend, on_delete=models.SET_NULL, null=True)
     picture_src = models.ImageField()
+    picture_second = models.ImageField(default=0)
     direction = models.ManyToManyField(Direction, through='Workout')
 
     workouts = models.IntegerField(default=0)
@@ -198,7 +199,7 @@ class Progress(models.Model):
     cur_pic_back = models.ImageField(default='', null=True)
     prev_pic_side = models.ImageField(default='', null=True)
     cur_pic_side = models.ImageField(default='', null=True)
-    last_update = models.DateField(default=timezone.now())
+    last_update = models.DateField(default=timezone.now)
 
 
 class Payment(models.Model):

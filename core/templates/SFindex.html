@@ -85,7 +85,7 @@
                             Войти в аккаунт
                         </div>
                     </button>
-                    <p class="login-modal__bottom">У вас нет аккаунта? <a href="{% url "start" %}"
+                    <p class="login-modal__bottom">У вас нет аккаунта? <a onclick="handleModal(); handlePurchase()"
                                                                           class="login-modal__link">Создать</a></p>
                 </form>
             </div>
@@ -155,12 +155,10 @@
             {% else %}
                 <div class="header-mobile__buttons">
                     <button class='button header__button' id="login-button" onclick="mobileOpened();handlePurchase()">
-                        <a href="{% url "start" %}">
                             <div class="button__inner">
                                 Тренироваться
                                 <img src='../static/images/bolt.svg' alt="" class="button__icon">
                             </div>
-                        </a>
                     </button>
 
                     <button class='button _clear header__button last' onclick="mobileOpened(); handleModal()">
@@ -196,7 +194,7 @@
                         Новые тренировки каждый месяц
                     </div>
                 </div>
-                <button class="button  hero__button">
+                <button class="button  hero__button" onclick="handlePurchase()">
                     <div class="button__inner">
                         Начать тренировку
                         <img src='../static/images/bolt.svg' alt="" class="button__icon">
@@ -205,7 +203,7 @@
             </div>
             <div class="hero__right">
                 <img src='../static/images/hero.png' alt="" class="hero__image">
-                <button class="button  hero__button mobile">
+                <button class="button  hero__button mobile" onclick="handlePurchase()">
                     <div class="button__inner">
                         Начать тренировку
                         <img src='../static/images/bolt.svg' alt="" class="button__icon">
@@ -232,8 +230,8 @@
                                     {% for i in list_programs %}
                                         <div class="swiper-slide">
                                             <div class="program-slide">
-                                                <div class="program-slide__frame"
-                                                     style='background-image:url("media/{{ i.picture_src }}");background-size:cover;background-position:center'>
+						<a href="{% url 'program' i.id %}">
+                                                <div class="program-slide__frame"style='background-image:url("../../media/{{ i.picture_src }}");background-size:cover;background-position:center'>
                                                 </div>
                                                 <div class="program-slide__bottom">
                                                     <p class="program-slide__name">{{ i.name }}</p>
@@ -255,6 +253,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+						</a>
                                             </div>
                                         </div>
                                     {% endfor %}
@@ -371,7 +370,7 @@
                                         <div class="swiper-slide">
                                             <div class='blog-slide main-blog__slide'>
                                                 <div class="blog-slide__frame"
-                                                     style='backgroundImage:url("media/{{ i.picture }}")'></div>
+                                                     style='backgroundImage:url("../../media/{{ i.picture_src }}"></div>
                                                 <div class="blog-slide__info">
                                                     <p class="blog-slide__title">{{ i.name }}</p>
                                                     <div class="blog-slide__misc">
@@ -394,7 +393,7 @@
                 </div>
             </div>
             <a href="{% url 'start' %}">
-                <button class='button main-blog__button'>
+                <button class='button main-blog__button' onclick="handlePurchase()">
                     <div class="button__inner">
                         начать тренировку
                         <img src="../static/images/bolt.svg" alt="" class="button__icon"/>
@@ -422,8 +421,9 @@
                                     {% for i in list_trainers %}
                                         <div class="swiper-slide">
                                             <div class="trainer-slide">
+						<a href="{% url 'trainer' i.id %}">
                                                 <div class="trainer-slide__frame"
-                                                     style='background-image:url("media/{{ i.picture_src }}")'></div>
+                                                     style='background-image:url("../../media/{{ i.picture_src }}")'></div>
                                                 <div class="trainer-slide__info">
                                                     <p class="trainer-slide__name">{{ i.name }}</p>
                                                     <div class="trainer-slide__misc">
@@ -444,6 +444,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+						</a>
                                             </div>
                                         </div>
                                     {% endfor %}
@@ -506,7 +507,7 @@
                                         <div class="swiper-slide">
                                             <div class='review-slide'>
                                                 <div class="review-slide__frame" style='
-                                                        background-image: url("media/{{ i.image }}")'>
+                                                        background-image: url("../../media/{{ i.image }}")'>
                                                 </div>
                                                 <div class="review-slide__info">
                                                     <p class="review-slide__name">{{ i.name }}</p>
@@ -627,6 +628,10 @@
 </body>
 <script>
     const handlePurchase = () => {
+	const modals = document.querySelectorAll(".modal")
+        const backgrounds = document.querySelectorAll(".modal-background")
+        modals[1].classList.add("modal-disabled")
+        backgrounds[1].classList.add("modal-disabled")
         const loginModal = document.getElementById('purchase-modal-box')
         const loginBackground = document.getElementById("purchase-modal-background")
         loginModal.classList.toggle('modal-disabled')
@@ -641,6 +646,10 @@
         mobileMenu.classList.toggle('opened')
     }
     const handleModal = () => {
+	const modals = document.querySelectorAll(".modal")
+        const backgrounds = document.querySelectorAll(".modal-background")
+        modals[0].classList.add("modal-disabled")
+        backgrounds[0].classList.add("modal-disabled")
         const loginModal = document.getElementById('login-modal-box')
         const loginBackground = document.getElementById("login-modal-background")
         loginModal.classList.toggle('modal-disabled')
@@ -650,14 +659,15 @@
     const questions = document.querySelectorAll(".questions__item-body")
 
     const handler = (index) => {
+	console.log(questions[index].classList)
         for (let j = 0; j < crosses.length; j++) {
             if (crosses[j] !== crosses[index]) {
                 crosses[j].classList.remove("_opened")
                 questions[j].classList.remove("_opened")
             }
-            crosses[index].classList.toggle("_opened")
-            questions[index].classList.toggle("_opened")
         }
+	crosses[index].classList.toggle("_opened")
+        questions[index].classList.toggle("_opened")
     }
 </script>
 <script type="module">
